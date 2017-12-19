@@ -58,55 +58,55 @@ inline void Physics::Initialize()
             else
                 f = 6;
             if( flag == 0 ) {
-                color.r = ofRandom(255.0f);
-                color.g = ofRandom(255.0f);
-                color.b = ofRandom(255.0f);
-                color.a = 255.0f;
+                color.r = ofRandom(255);
+                color.g = ofRandom(255);
+                color.b = ofRandom(255);
+                color.a = 255;
             }
             if( flag == 1 ){
                 if(r < NUMROWS / 2) {
 
-                    color.r = 255.0f;
-                    color.g = 255.0f;
-                    color.b = 255.0f;
+                    color.r = 255;
+                    color.g = 255;
+                    color.b = 255;
                 }
                 else{
 
-                    color.r = 255.0f;
-                    color.g = 0.0f;
-                    color.b = 0.0f;
+                    color.r = 255;
+                    color.g = 0;
+                    color.b = 0;
                 }
-                color.a = 255.0f;
+                color.a = 255;
             }
             if( flag == 2 ){
                 if(flags.at(r).at(c) == 0 ) {
 
-                    color.r = 255.0f;
-                    color.g = 255.0f;
-                    color.b = 255.0f;
+                    color.r = 255;
+                    color.g = 255;
+                    color.b = 255;
                 }
                 else{
 
-                    color.r = 0.0f;
-                    color.g = 0.0f;
-                    color.b = 0.0f;
+                    color.r = 0;
+                    color.g = 0;
+                    color.b = 0;
                 }
-                color.a = 255.0f;
+                color.a = 255;
             }
             if( flag == 3 ){
                 if(flags.at(r).at(c) == 1 ) {
 
-                    color.r = 255.0f;
-                    color.g = 255.0f;
-                    color.b = 255.0f;
+                    color.r = 255;
+                    color.g = 255;
+                    color.b = 255;
                 }
                 else{
 
-                    color.r = 0.0f;
-                    color.g = 0.0f;
-                    color.b = 0.0f;
+                    color.r = 0;
+                    color.g = 0;
+                    color.b = 0;
                 }
-                color.a = 255.0f;
+                color.a = 255;
             }
 
             Particles.at(r).at(c).Mass = (f * MASSPERFACE) / 3;
@@ -321,25 +321,6 @@ inline void Physics::CalcForces(std::vector <std::vector<Particle>> &particles)
 
 inline void Physics::StepSimulation(const double &dt)
 {
-    /*
-    Vector Ae;
-
-    CalcForces(Particles);
-
-    for (auto r = 0; r <= NUMROWS; r++) {
-        for (auto c = 0; c <= NUMCOLUMNS; c++) {
-            Ae = Particles.at(r).at(c).Forces * Particles.at(r).at(c).InvMass;
-            Particles.at(r).at(c).Acceleration = Ae;
-            Particles.at(r).at(c).Velocity += Ae * dt;
-            Particles.at(r).at(c).Position += Particles.at(r).at(c).Velocity * dt;
-        }
-    }
-
-    if (CheckForCollisions(Particles) == COLLISION)
-        ResolveCollisions(Particles);
-
-    UpdateClothGeometry();*/
-
     Vector Ae;
     std::vector <std::vector<Particle>> p(NUMROWS + 1, std::vector<Particle>(NUMCOLUMNS + 1));
     double dtime = dt;
@@ -433,9 +414,6 @@ inline void Physics::UpdateClothGeometry()
             vertices++;
         }
     }
-
-    //UpdateCloth(ClothFaces, NUMFACES*2, ClothVertices, NUMVERTICES*2);
-
 }
 
 inline void
@@ -557,12 +535,12 @@ inline void Physics::customDraw()
     //  light.
     ofPushStyle();
     light.enable();
-    light.setPosition(Particles[0][0].Position);
+    light.setPosition(Particles.at(0).at(0).Position);
 
     for (auto i = 0; i < GetParticleSize1(); i++) {
         for (auto j = 0; j < GetParticleSize2(i); j++) {
             ofPushStyle();
-            ofSetColor(Particles[i][j].color);
+            ofSetColor(Particles.at(i).at(j).color);
 
             ofDrawSphere(Particles.at(i).at(j).Position.x,
                          Particles.at(i).at(j).Position.y,

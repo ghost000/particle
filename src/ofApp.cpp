@@ -188,6 +188,7 @@ void ofApp::draw()
     ofDrawBitmapString("Press keys 6 to decrease wind ", viewMain.x + 20, 130);
     ofDrawBitmapString("Press keys 7 to leave flag ", viewMain.x + 20, 150);
     ofDrawBitmapString("Press keys 8 to restart flag ", viewMain.x + 20, 170);
+    ofDrawBitmapString("Press keys 9 and 8 to change and restart flag ", viewMain.x + 20, 190);
 
     ofDrawBitmapString("EasyCam", viewGrid[0].x + 20, viewGrid[0].y + 30);
     ofDrawBitmapString("Front", viewGrid[1].x + 20, viewGrid[1].y + 30);
@@ -221,22 +222,7 @@ void ofApp::drawScene(int iCameraDraw)
     pysics.customDraw();
     //nodeGrid.draw();
 
-    /*for (auto i = 0; i < pysics.GetParticleSize1(); i++) {
-        for (auto j = 0; j < pysics.GetParticleSize2(i); j++) {
-            if ((i + j) % 2 == 0)
-                ofSetColor(255, 63, 180);
-            if ((i + j) % 2 == 1)
-                ofSetColor(0, 100, 100);
-            ofPoint of(pysics.Particles.at(i).at(j).Position.x,
-                       pysics.Particles.at(i).at(j).Position.y,
-                       pysics.Particles.at(i).at(j).Position.z);
-            ofNoFill();
-            ofDrawCircle(of.x, of.y, of.z, 1.0);
-            ofDrawCircle(of, 6);
-            ofFill();
-            ofDrawCircle(of.x, of.y, of.z, 5.0);
-        }
-    }*/
+
 
     //--
     // Draw frustum preview for ofEasyCam camera
