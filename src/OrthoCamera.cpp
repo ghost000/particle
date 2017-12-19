@@ -6,14 +6,12 @@
 //
 // We inherit from ofCamera
 
-orthoCamera::orthoCamera()
-{
+orthoCamera::orthoCamera() {
     enableOrtho();
     scale = 1;
 }
 
-void orthoCamera::begin(ofRectangle rect)
-{
+void orthoCamera::begin(ofRectangle rect) {
     ofCamera::begin(rect);
 
     //--

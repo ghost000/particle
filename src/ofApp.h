@@ -21,7 +21,7 @@
 
 class ofApp : public ofBaseApp {
 
-public:
+  public:
     void setup();
 
     void update();

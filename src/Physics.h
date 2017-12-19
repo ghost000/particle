@@ -7,7 +7,7 @@
 #include "ofMain.h"
 
 class Physics : public ofNode {
-public:
+  public:
     Physics();
 
     ~Physics();
@@ -48,7 +48,7 @@ public:
 
     ofLight light;
 
-private:
+  private:
     std::vector<double> ClothFaces;
     std::vector<double> ClothVertices;
     std::vector <Spring> Springs;

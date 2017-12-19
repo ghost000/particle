@@ -9,7 +9,7 @@
 // We inherit from ofCamera
 
 class orthoCamera : public ofCamera {
-public:
+  public:
     orthoCamera();
 
     void begin(ofRectangle rect = ofGetWindowRect());

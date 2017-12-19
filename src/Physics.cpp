@@ -5,35 +5,33 @@
 
 inline Physics::Physics() : Particles(NUMROWS + 1, std::vector<Particle>(NUMCOLUMNS + 1)),
     Springs(NUMSTRUCTURALSPRINGS), Collisions(NUMVERTICES), wind(WindForceFactor), flag(0),
-                            flags{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                  {0,0,0,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0},
-                                  {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
-                                  {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
-                                  {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
-                                  {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
-                                  {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
-                                  {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
-                                  {0,0,0,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0},
-                                  {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
-                                  {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
-                                  {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
-                                  {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
-                                  {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
-                                  {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
-                                  {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
-                                  {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
-                                  {0,0,0,1,0,1,1,1,1,0,1,1,1,1,0,1,0,0,0,0,0},
-                                  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}
-{
+    flags{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0},
+    {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
+    {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
+    {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
+    {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
+    {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
+    {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
+    {0,0,0,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0},
+    {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
+    {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
+    {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
+    {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
+    {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
+    {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
+    {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
+    {0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0},
+    {0,0,0,1,0,1,1,1,1,0,1,1,1,1,0,1,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}} {
     light.setAmbientColor(ofColor(0, 0, 0));
 }
 
 inline Physics::~Physics() = default;
 
-inline void Physics::Initialize()
-{
+inline void Physics::Initialize() {
 
     double f;
     Vector L;
@@ -63,14 +61,13 @@ inline void Physics::Initialize()
                 color.b = ofRandom(255);
                 color.a = 255;
             }
-            if( flag == 1 ){
+            if( flag == 1 ) {
                 if(r < NUMROWS / 2) {
 
                     color.r = 255;
                     color.g = 255;
                     color.b = 255;
-                }
-                else{
+                } else {
 
                     color.r = 255;
                     color.g = 0;
@@ -78,14 +75,13 @@ inline void Physics::Initialize()
                 }
                 color.a = 255;
             }
-            if( flag == 2 ){
+            if( flag == 2 ) {
                 if(flags.at(r).at(c) == 0 ) {
 
                     color.r = 255;
                     color.g = 255;
                     color.b = 255;
-                }
-                else{
+                } else {
 
                     color.r = 0;
                     color.g = 0;
@@ -93,14 +89,13 @@ inline void Physics::Initialize()
                 }
                 color.a = 255;
             }
-            if( flag == 3 ){
+            if( flag == 3 ) {
                 if(flags.at(r).at(c) == 1 ) {
 
                     color.r = 255;
                     color.g = 255;
                     color.b = 255;
-                }
-                else{
+                } else {
 
                     color.r = 0;
                     color.g = 0;
@@ -249,8 +244,7 @@ inline void Physics::Initialize()
     WindVector.z = 1.0;
 }
 
-inline int Physics::tb_Rnd(const int &min, const int &max)
-{
+inline int Physics::tb_Rnd(const int &min, const int &max) {
     int number= {(std::abs(std::rand()) % (max - min + 1)) + min};
 
     if (number > max) {
@@ -264,8 +258,7 @@ inline int Physics::tb_Rnd(const int &min, const int &max)
     return number;
 }
 
-inline void Physics::CalcForces(std::vector <std::vector<Particle>> &particles)
-{
+inline void Physics::CalcForces(std::vector <std::vector<Particle>> &particles) {
     Vector dragVector;
     Vector f1, f2, d, v;
     double L;
@@ -319,8 +312,7 @@ inline void Physics::CalcForces(std::vector <std::vector<Particle>> &particles)
     }
 }
 
-inline void Physics::StepSimulation(const double &dt)
-{
+inline void Physics::StepSimulation(const double &dt) {
     Vector Ae;
     std::vector <std::vector<Particle>> p(NUMROWS + 1, std::vector<Particle>(NUMCOLUMNS + 1));
     double dtime = dt;
@@ -366,8 +358,7 @@ inline void Physics::StepSimulation(const double &dt)
 
 }
 
-inline void Physics::ReleaseLockedParticles()
-{
+inline void Physics::ReleaseLockedParticles() {
 
     for (auto r = 0; r <= NUMROWS; r++) {
         for (auto c = 0; c <= NUMCOLUMNS; c++) {
@@ -376,20 +367,17 @@ inline void Physics::ReleaseLockedParticles()
     }
 }
 
-inline void Physics::SetWindVector(const double &x, const double &y, const double &z)
-{
+inline void Physics::SetWindVector(const double &x, const double &y, const double &z) {
     WindVector.x = x;
     WindVector.y = y;
     WindVector.z = z;
 }
 
-inline void Physics::SetWindForceFactor(const double &f)
-{
+inline void Physics::SetWindForceFactor(const double &f) {
     wind += f;
 }
 
-inline void Physics::UpdateClothGeometry()
-{
+inline void Physics::UpdateClothGeometry() {
     // fill the vertex array to pass to Direct3D
     auto vertices = ClothVertices.begin();
     for (auto r = 0; r <= NUMROWS; r++) {
@@ -417,8 +405,7 @@ inline void Physics::UpdateClothGeometry()
 }
 
 inline void
-Physics::CopyParticles(const std::vector <std::vector<Particle>> &src, std::vector <std::vector<Particle>> &dst)
-{
+Physics::CopyParticles(const std::vector <std::vector<Particle>> &src, std::vector <std::vector<Particle>> &dst) {
 
     for (auto r = 0; r <= NUMROWS; r++) {
         for (auto c = 0; c <= NUMCOLUMNS; c++) {
@@ -433,8 +420,7 @@ Physics::CopyParticles(const std::vector <std::vector<Particle>> &src, std::vect
 
 }
 
-inline double Physics::CheckForCollisions(const std::vector <std::vector<Particle>> &p)
-{
+inline double Physics::CheckForCollisions(const std::vector <std::vector<Particle>> &p) {
     int count{0};
     auto state{NOCOLLISION};
     double d;
@@ -495,8 +481,7 @@ inline double Physics::CheckForCollisions(const std::vector <std::vector<Particl
     return state;
 }
 
-inline void Physics::ResolveCollisions(std::vector <std::vector<Particle>> &p)
-{
+inline void Physics::ResolveCollisions(std::vector <std::vector<Particle>> &p) {
 
     for (auto i = 0; i < NUMVERTICES; i++) {
         if (Collisions.at(i).p1.r != -1) {
@@ -509,18 +494,15 @@ inline void Physics::ResolveCollisions(std::vector <std::vector<Particle>> &p)
     }
 }
 
-inline int Physics::GetParticleSize1()
-{
+inline int Physics::GetParticleSize1() {
     return Particles.size();
 }
 
-inline int Physics::GetParticleSize2(const size_t &count)
-{
+inline int Physics::GetParticleSize2(const size_t &count) {
     return Particles.at(count).size();
 }
 
-inline void Physics::customDraw()
-{
+inline void Physics::customDraw() {
     // We run the update ourselves manually. ofNode does
     //  not do this for us.
     //update();
@@ -568,8 +550,7 @@ inline void Physics::customDraw()
     ofPopStyle();
 }
 
-inline double Physics::GetWind()
-{
+inline double Physics::GetWind() {
     return wind;
 }
 

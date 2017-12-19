@@ -11,13 +11,11 @@ inline Vector::Vector(const double &x, const double &y, const double &z) : x(x),
 
 inline Vector::~Vector() {}
 
-inline double Vector::Magnitude()
-{
+inline double Vector::Magnitude() {
     return sqrt(x * x + y * y + z * z);
 }
 
-inline void Vector::Normalize()
-{
+inline void Vector::Normalize() {
     double m = sqrt(x * x + y * y + z * z);
     if (m <= toll) m = 1;
     x /= m;
@@ -29,15 +27,13 @@ inline void Vector::Normalize()
     if (std::fabs(z) < toll) z = 0.0;
 }
 
-inline void Vector::Reverse()
-{
+inline void Vector::Reverse() {
     x = -x;
     y = -y;
     z = -z;
 }
 
-inline Vector &Vector::operator+=(const Vector &other)
-{
+inline Vector &Vector::operator+=(const Vector &other) {
     x += other.x;
     y += other.y;
     z += other.z;
@@ -45,8 +41,7 @@ inline Vector &Vector::operator+=(const Vector &other)
     return *this;
 }
 
-inline Vector &Vector::operator-=(const Vector &other)
-{
+inline Vector &Vector::operator-=(const Vector &other) {
     x -= other.x;
     y -= other.y;
     z -= other.z;
@@ -54,8 +49,7 @@ inline Vector &Vector::operator-=(const Vector &other)
     return *this;
 }
 
-inline Vector &Vector::operator*=(const double &other)
-{
+inline Vector &Vector::operator*=(const double &other) {
     x *= other;
     y *= other;
     z *= other;
@@ -63,8 +57,7 @@ inline Vector &Vector::operator*=(const double &other)
     return *this;
 }
 
-inline Vector &Vector::operator/=(const double &other)
-{
+inline Vector &Vector::operator/=(const double &other) {
     x /= other;
     y /= other;
     z /= other;
@@ -72,42 +65,34 @@ inline Vector &Vector::operator/=(const double &other)
     return *this;
 }
 
-inline Vector Vector::operator-()
-{
+inline Vector Vector::operator-() {
     return Vector(-x, -y, -z);
 }
 
-inline Vector operator+(const Vector &l, const Vector &r)
-{
+inline Vector operator+(const Vector &l, const Vector &r) {
     return Vector(l.x + r.x, l.y + r.y, l.z + r.z);
 }
 
-inline Vector operator-(const Vector &l, const Vector &r)
-{
+inline Vector operator-(const Vector &l, const Vector &r) {
     return Vector(l.x - r.x, l.y - r.y, l.z - r.z);
 }
 
-inline Vector operator^(const Vector &l, const Vector &r)
-{
+inline Vector operator^(const Vector &l, const Vector &r) {
     return Vector(l.y * r.z - l.z * r.y, -l.x * r.z + l.z * r.x, l.x * r.y - l.y * r.x);
 }
 
-inline double operator*(const Vector &l, const Vector &r)
-{
+inline double operator*(const Vector &l, const Vector &r) {
     return l.x * r.x + l.y * r.y + l.z * r.z;
 }
 
-inline Vector operator*(const double &l, const Vector &r)
-{
+inline Vector operator*(const double &l, const Vector &r) {
     return Vector(l * r.x, l * r.y, l * r.z);
 }
 
-inline Vector operator*(const Vector &r, const double &l)
-{
+inline Vector operator*(const Vector &r, const double &l) {
     return Vector(l * r.x, l * r.y, l * r.z);
 }
 
-inline Vector operator/(const Vector &r, const double &l)
-{
+inline Vector operator/(const Vector &r, const double &l) {
     return Vector(r.x / l, r.y / l, r.z / l);
 }

@@ -7,7 +7,7 @@
 #include "ofMain.h"
 
 class Vector : public ofVec3f {
-public:
+  public:
     double x;
     double y;
     double z;

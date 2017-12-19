@@ -30,8 +30,7 @@
 
 
 //--------------------------------------------------------------
-void ofApp::setup()
-{
+void ofApp::setup() {
 
     ofSetVerticalSync(true);
     ofBackground(70, 70, 70);
@@ -94,8 +93,7 @@ void ofApp::setup()
 }
 
 //--------------------------------------------------------------
-void ofApp::setupViewports()
-{
+void ofApp::setupViewports() {
     //call here whenever we resize the window
 
 
@@ -123,15 +121,13 @@ void ofApp::setupViewports()
 }
 
 //--------------------------------------------------------------
-void ofApp::update()
-{
+void ofApp::update() {
     pysics.StepSimulation(0.01);
 }
 
 
 //--------------------------------------------------------------
-void ofApp::draw()
-{
+void ofApp::draw() {
     //--
     // Highlight background of selected camera
 
@@ -217,8 +213,7 @@ void ofApp::draw()
     //--
 }
 
-void ofApp::drawScene(int iCameraDraw)
-{
+void ofApp::drawScene(int iCameraDraw) {
     pysics.customDraw();
     //nodeGrid.draw();
 
@@ -347,8 +342,7 @@ void ofApp::drawScene(int iCameraDraw)
 }
 
 //--------------------------------------------------------------
-void ofApp::updateMouseRay()
-{
+void ofApp::updateMouseRay() {
     // Define ray in screen space
     ray[0] = ofVec3f(ofGetMouseX(), ofGetMouseY(), -1);
     ray[1] = ofVec3f(ofGetMouseX(), ofGetMouseY(), 1);
@@ -359,8 +353,7 @@ void ofApp::updateMouseRay()
 }
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key)
-{
+void ofApp::keyPressed(int key) {
 
     if (key >= '1' && key <= '4') {
         iMainCamera = key - '1';
@@ -422,45 +415,37 @@ void ofApp::keyPressed(int key)
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key)
-{
+void ofApp::keyReleased(int key) {
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y)
-{
+void ofApp::mouseMoved(int x, int y) {
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button)
-{
+void ofApp::mouseDragged(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button)
-{
+void ofApp::mousePressed(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button)
-{
+void ofApp::mouseReleased(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y)
-{
+void ofApp::mouseEntered(int x, int y) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y)
-{
+void ofApp::mouseExited(int x, int y) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::windowResized(int w, int h)
-{
+void ofApp::windowResized(int w, int h) {
     setupViewports();
 }
 
