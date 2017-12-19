@@ -5,7 +5,8 @@
 
 inline Physics::Physics() : Particles(NUMROWS + 1, std::vector<Particle>(NUMCOLUMNS + 1)),
     Springs(NUMSTRUCTURALSPRINGS), Collisions(NUMVERTICES), wind(WindForceFactor), flag(0),
-    flags{{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    flags{
+	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0},
     {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
@@ -188,7 +189,6 @@ inline void Physics::Initialize() {
     }
 
     count = 0;
-    //n = NUMSTRUCTURALSPRINGS;
 
     for (auto r = 0; r <= NUMROWS; r++) {
         for (auto c = 0; c <= NUMCOLUMNS; c++) {
@@ -328,7 +328,6 @@ inline void Physics::StepSimulation(const double &dt) {
         // calculate all of the forces
         CalcForces(p);
 
-        // doubleegrate
         for (auto r = 0; r <= NUMROWS; r++) {
             for (auto c = 0; c <= NUMCOLUMNS; c++) {
                 Ae = p.at(r).at(c).Forces * p.at(r).at(c).InvMass;
@@ -345,7 +344,6 @@ inline void Physics::StepSimulation(const double &dt) {
             dtime = dtime / 2;
             tryAgain = true;
             didPen = true;
-            //assert(dtime <= tol);
         } else if (check == COLLISION) {
             ResolveCollisions(p);
             didPen = false;
@@ -353,7 +351,7 @@ inline void Physics::StepSimulation(const double &dt) {
     }
 
     CopyParticles(p, Particles);
-    // update the D3D cloth object's geometry
+    // update cloth object's geometry
     UpdateClothGeometry();
 
 }
@@ -378,7 +376,7 @@ inline void Physics::SetWindForceFactor(const double &f) {
 }
 
 inline void Physics::UpdateClothGeometry() {
-    // fill the vertex array to pass to Direct3D
+    // fill the vertex array
     auto vertices = ClothVertices.begin();
     for (auto r = 0; r <= NUMROWS; r++) {
         for (auto c = 0; c <= NUMCOLUMNS; c++) {
@@ -544,7 +542,8 @@ inline void Physics::customDraw() {
     ofSetColor(255, 255, 255);
     ofDrawSphere(light.getPosition(), 2.0);
     ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL);
-    ofDrawBitmapString(" light", Particles.at(0).at(0).Position.x,
+    ofDrawBitmapString(" light", 
+					   Particles.at(0).at(0).Position.x,
                        Particles.at(0).at(0).Position.y,
                        Particles.at(0).at(0).Position.z);
     ofPopStyle();

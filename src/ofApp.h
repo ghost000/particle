@@ -1,15 +1,4 @@
 #pragma once
-
-//--------------------------------------------------------------
-//
-//
-// ADVANCED 3D EXAMPLE
-//		ofNode3d, ofCamera, ofEasyCam
-//
-//
-//--------------------------------------------------------------
-
-
 #include "ofMain.h"
 
 // Custom objects for this example

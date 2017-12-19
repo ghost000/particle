@@ -1,35 +1,5 @@
 #include "ofApp.h"
 
-//--------------------------------------------------------------
-//
-//
-// ADVANCED 3D EXAMPLE
-//		ofNode3d, ofCamera, ofEasyCam
-//
-//
-//--------------------------------------------------------------
-
-//
-// SUGGESTED EXERCISES
-//
-// 0. Run and understand the example
-//
-// 1. Change number of particles in the swarm.
-// 2. Change the dynamic properties of the swarm (speed, orbit radius)
-// 3. Change the near and far clipping planes of camEasyCam
-//
-// 4. Add another camera to the existing 4.
-//		Have all parts of the example working with all 5 cameras.
-//
-// 6. Create your own custom node class and add an instance of it
-//		to the scene.
-//
-// 7. Understand how the 'frustrum preview' works
-//
-
-
-
-//--------------------------------------------------------------
 void ofApp::setup() {
 
     ofSetVerticalSync(true);
@@ -65,31 +35,10 @@ void ofApp::setup() {
     camLeft.scale = 20;
     camLeft.pan(-90);
     cameras[3] = &camLeft;
-
-    //
-    //--
-
-
-
-    //--
-    // Define viewports
-
+    
     setupViewports();
 
-    //
-    //--
-
-
-
-
-    //--
-    // Setup swarm
-
-    // swarm is a custom ofNode in this example (see Swarm.h / Swarm.cpp)
     pysics.Initialize();
-
-    //
-    //--
 }
 
 //--------------------------------------------------------------
@@ -206,16 +155,12 @@ void ofApp::draw() {
     glDepthFunc(GL_LESS);
     ofPopStyle();
 
-    //ofBackgroundGradient(ofColor(60,60,60), ofColor(10,10,10));
-
-
     //
     //--
 }
 
 void ofApp::drawScene(int iCameraDraw) {
     pysics.customDraw();
-    //nodeGrid.draw();
 
 
 

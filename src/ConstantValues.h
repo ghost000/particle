@@ -12,8 +12,7 @@ constexpr double NUMCOLUMNS{20};
 constexpr double CLOTHHEIGHT{280};
 constexpr double CLOTHWIDTH{400};
 constexpr double CLOTHMASS{400};
-constexpr double NUMSTRUCTURALSPRINGS{
-    NUMCOLUMNS * (NUMROWS + 1) + NUMROWS * (NUMCOLUMNS + 1) + NUMCOLUMNS * NUMROWS * 2};
+constexpr double NUMSTRUCTURALSPRINGS{NUMCOLUMNS * (NUMROWS + 1) + NUMROWS * (NUMCOLUMNS + 1) + NUMCOLUMNS * NUMROWS * 2};
 constexpr double NUMFACES{(NUMCOLUMNS * NUMROWS) * 2};
 constexpr double NUMVERTICES{(NUMCOLUMNS + 1) * (NUMROWS + 1)};
 constexpr double MASSPERFACE{CLOTHMASS / NUMFACES};
