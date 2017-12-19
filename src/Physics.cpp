@@ -6,7 +6,7 @@
 inline Physics::Physics() : Particles(NUMROWS + 1, std::vector<Particle>(NUMCOLUMNS + 1)),
     Springs(NUMSTRUCTURALSPRINGS), Collisions(NUMVERTICES), wind(WindForceFactor), flag(0),
     flags{
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
     {0,0,0,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,0},
     {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0},
@@ -542,8 +542,8 @@ inline void Physics::customDraw() {
     ofSetColor(255, 255, 255);
     ofDrawSphere(light.getPosition(), 2.0);
     ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL);
-    ofDrawBitmapString(" light", 
-					   Particles.at(0).at(0).Position.x,
+    ofDrawBitmapString(" light",
+                       Particles.at(0).at(0).Position.x,
                        Particles.at(0).at(0).Position.y,
                        Particles.at(0).at(0).Position.z);
     ofPopStyle();

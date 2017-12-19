@@ -15,7 +15,7 @@ void ofApp::setup() {
     bCamParent = false;
 
     // user camera
-    camEasyCam.setTarget(pysics);
+    camEasyCam.setTarget(physics);
     camEasyCam.setDistance(1000);
     camEasyCam.boom(200);
     camEasyCam.truck(300);
@@ -35,10 +35,10 @@ void ofApp::setup() {
     camLeft.scale = 20;
     camLeft.pan(-90);
     cameras[3] = &camLeft;
-    
+
     setupViewports();
 
-    pysics.Initialize();
+    physics.Initialize();
 }
 
 //--------------------------------------------------------------
@@ -71,7 +71,7 @@ void ofApp::setupViewports() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
-    pysics.StepSimulation(0.01);
+    physics.StepSimulation(0.01);
 }
 
 
@@ -129,11 +129,12 @@ void ofApp::draw() {
     ofDrawBitmapString("Press 'f' to toggle fullscreen", viewMain.x + 20, 70);
     ofDrawBitmapString("Press 'p' to toggle parents on OrthoCamera's", viewMain.x + 20, 90);
 
-    ofDrawBitmapString("Press keys 5 to increase wind " + ofToString(pysics.GetWind()), viewMain.x + 20, 110);
+    ofDrawBitmapString("Press keys 5 to increase wind " + ofToString(physics.GetWind()), viewMain.x + 20, 110);
     ofDrawBitmapString("Press keys 6 to decrease wind ", viewMain.x + 20, 130);
     ofDrawBitmapString("Press keys 7 to leave flag ", viewMain.x + 20, 150);
     ofDrawBitmapString("Press keys 8 to restart flag ", viewMain.x + 20, 170);
     ofDrawBitmapString("Press keys 9 and 8 to change and restart flag ", viewMain.x + 20, 190);
+    ofDrawBitmapString("Camera control wsad ", viewMain.x + 20, 210);
 
     ofDrawBitmapString("EasyCam", viewGrid[0].x + 20, viewGrid[0].y + 30);
     ofDrawBitmapString("Front", viewGrid[1].x + 20, viewGrid[1].y + 30);
@@ -160,7 +161,7 @@ void ofApp::draw() {
 }
 
 void ofApp::drawScene(int iCameraDraw) {
-    pysics.customDraw();
+    physics.customDraw();
 
 
 
@@ -305,16 +306,16 @@ void ofApp::keyPressed(int key) {
     }
 
     if( key == '5') {
-        pysics.SetWindForceFactor(100);
+        physics.SetWindForceFactor(100);
     }
     if(key == '6') {
-        pysics.SetWindForceFactor(-100);
+        physics.SetWindForceFactor(-100);
     }
     if(key == '7') {
-        pysics.ReleaseLockedParticles();
+        physics.ReleaseLockedParticles();
     }
     if(key == '8') {
-        pysics.Initialize();
+        physics.Initialize();
 
     }
 
@@ -330,9 +331,9 @@ void ofApp::keyPressed(int key) {
 
             bCamParent = false;
         } else {
-            camFront.setParent(pysics.light);
-            camTop.setParent(pysics.light);
-            camLeft.setParent(pysics.light);
+            camFront.setParent(physics.light);
+            camTop.setParent(physics.light);
+            camLeft.setParent(physics.light);
 
             bCamParent = true;
         }
@@ -355,7 +356,7 @@ void ofApp::keyPressed(int key) {
         cameras[0]->boom(-10);
     }
     if(key=='9') {
-        pysics.NextFag();
+        physics.NextFag();
     }
 }
 

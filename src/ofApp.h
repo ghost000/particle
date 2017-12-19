@@ -58,7 +58,7 @@ class ofApp : public ofBaseApp {
     ofRectangle viewMain;
     ofRectangle viewGrid[N_CAMERAS];
 
-    Physics pysics;
+    Physics physics;
     grid nodeGrid;
 
     //ray drawn under mouse cursor [start,end]
